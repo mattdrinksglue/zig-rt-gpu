@@ -5,11 +5,12 @@ pub fn build(b: *std.Build) !void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+    const deps: []const std.Build.ModuleDependency = &.{};
     const app = try mach.App.init(b, .{
         .name = "myapp",
         .src = "src/main.zig",
         .target = target,
-        .deps = &[_]std.build.Pkg{},
+        .deps = deps,
         .optimize = optimize,
     });
     try app.link(.{});
